@@ -1,0 +1,15 @@
+dependencies {
+    implementation project(':model')
+    implementation project(":constants")
+    implementation 'org.springframework:spring-context'
+
+    implementation 'org.reactivecommons.utils:object-mapper-api:0.1.0'
+    implementation 'org.mapstruct:mapstruct:1.5.5.Final'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+    testImplementation 'org.reactivecommons.utils:object-mapper:0.1.0'
+    implementation "com.playtika.reactivefeign:feign-reactor-spring-cloud-starter:4.2.1"
+
+    implementation "com.playtika.reactivefeign:feign-reactor-core:4.2.1"
+    implementation "com.playtika.reactivefeign:feign-reactor-spring-configuration:4.2.1"
+
+}
