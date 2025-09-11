@@ -3,6 +3,7 @@ package co.com.pragma.r2dbc.entity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
@@ -12,6 +13,7 @@ import java.math.BigDecimal;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder(toBuilder = true)
 @Table(name = "solicitudes")
 public class SolicitudEntity {
@@ -28,5 +30,6 @@ public class SolicitudEntity {
     private String loanType;
     @Column("status")
     private String status;
-
+    @Column("interest_rate")
+    private double interestRate;
 }

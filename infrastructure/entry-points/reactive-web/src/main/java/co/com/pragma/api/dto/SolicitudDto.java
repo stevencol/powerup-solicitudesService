@@ -4,8 +4,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
-import jakarta.validation.constraints.PositiveOrZero;
-import lombok.NonNull;
 
 import java.math.BigDecimal;
 
@@ -13,7 +11,6 @@ import java.math.BigDecimal;
 public record SolicitudDto(
 
         Long id,
-        @NonNull
         @JsonProperty("user")
         UserDto userDto,
         @Positive
@@ -22,6 +19,9 @@ public record SolicitudDto(
         @Positive
         Integer termInMonths,
         String loanType,
-        String status
+        String status,
+        double interestRate,
+        Boolean validationAutomatic
+
 ) {
 }

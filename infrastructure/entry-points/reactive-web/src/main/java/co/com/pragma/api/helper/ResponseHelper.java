@@ -30,7 +30,7 @@ public class ResponseHelper {
     public static Mono<ApiResponseDto<Map<String, Object>>> buildFieldErrorResponse(BindingResult result) {
         Map<String, Object> fields = new HashMap<>();
         result.getFieldErrors().forEach(error -> fields.put(error.getField(), error.getDefaultMessage()));
-        ApiResponseDto<Map<String, Object>> apiResponseDto = new ApiResponseDto<>(null, HttpStatus.BAD_REQUEST, "Validation Error", "Invalid fields", fields, null);
+        ApiResponseDto<Map<String, Object>> apiResponseDto = new ApiResponseDto<>(null, HttpStatus.BAD_REQUEST, "Validation Error", "Invalid fields", fields, null, null);
         return Mono.just(apiResponseDto);
     }
 

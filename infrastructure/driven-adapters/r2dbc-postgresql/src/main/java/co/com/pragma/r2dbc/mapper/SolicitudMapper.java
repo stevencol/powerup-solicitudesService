@@ -1,7 +1,8 @@
 package co.com.pragma.r2dbc.mapper;
 
 import co.com.pragma.model.solicitudes.enums.LoanType;
-import co.com.pragma.model.solicitudes.model.SolicitudeModel;
+import co.com.pragma.model.solicitudes.model.SolicitudModel;
+
 import co.com.pragma.r2dbc.entity.SolicitudEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -12,10 +13,10 @@ import org.mapstruct.Named;
 public interface SolicitudMapper {
 
     @Mapping(source = "loanType", target = "loanType", qualifiedByName = "stringToEnum")
-    SolicitudeModel toModel(SolicitudEntity solicitud);
+    SolicitudModel toModel(SolicitudEntity solicitud);
 
     @Mapping(source = "loanType", target = "loanType", qualifiedByName = "enumToString")
-    SolicitudEntity toEntity(SolicitudeModel solicitud);
+    SolicitudEntity toEntity(SolicitudModel solicitud);
 
     @Named("enumToString")
     default String enumToString(LoanType loanType) {

@@ -1,25 +1,26 @@
 package co.com.pragma.api.mapper;
 
 import co.com.pragma.api.dto.SolicitudDto;
-import co.com.pragma.api.dto.UserDto;
 import co.com.pragma.model.solicitudes.enums.LoanType;
 import co.com.pragma.model.solicitudes.exception.InvalidLoanTypeException;
-import co.com.pragma.model.solicitudes.model.SolicitudeModel;
+import co.com.pragma.model.solicitudes.model.SolicitudModel;
 import co.com.pragma.model.solicitudes.model.UserModel;
 import org.mapstruct.*;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface SolicitudesModelMapper {
 
-    @Mapping(source = "loanType", target = "loanType", qualifiedByName = "mapLoanType")
+    /*@Mapping(source = "loanType", target = "loanType", qualifiedByName = "mapLoanType")
     @Mapping(source = "userDto.documentNumber", target = "userDocumentNumber")
-    SolicitudeModel toModel(SolicitudDto dto);
 
-    SolicitudDto toDto(SolicitudeModel model);
+     */
+    SolicitudModel toModel(SolicitudDto dto);
+
+    SolicitudDto toDto(SolicitudModel model);
 
     @Mapping(source = "model.id", target = "id")
     @Mapping(source = "user", target = "userDto")
-    SolicitudDto toDto(SolicitudeModel model, UserModel user);
+    SolicitudDto toDto(SolicitudModel model, UserModel user);
 
     @Named("mapLoanType")
     default LoanType mapLoanType(String value) {

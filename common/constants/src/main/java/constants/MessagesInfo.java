@@ -12,4 +12,5 @@ public class MessagesInfo {
     public static final String MSG_OPERATION_FAILED = "The operation has failed.";
     public static final String MSG_INVALID_INPUT = "The input provided is invalid.";
     public static final String MSG_ACCESS_DENIED = "Access is denied.";
+    public static final String MSG_SQS_SUCCESS = "Message sent to SQS successfully.";
 }

@@ -15,20 +15,26 @@ public record ApiResponseDto<T>(T data,
                                 String message,
                                 String error,
                                 Map<String, Object> fields,
-                                String token) {
+                                String token,
+                                PageDto page) {
 
 
     // Respuesta con datos correctos incluye data, estado y mensaje
     public ApiResponseDto(T data, String message, HttpStatus status) {
-        this(data, status, message, null, null, null);
+        this(data, status, message, null, null, null, null);
     }
 
     public ApiResponseDto(Map<String, Object> fields, String message, HttpStatus status, String error) {
-        this(null, status, message, error, fields, null);
+        this(null, status, message, error, fields, null, null);
     }
 
     public ApiResponseDto(String error, String message, HttpStatus status) {
-        this(null, status, message, error, null, null);
+        this(null, status, message, error, null, null, null);
     }
+
+    public ApiResponseDto(T data, HttpStatus status, PageDto page, String message) {
+        this(data, status, message, null, null, null, page);
+    }
+
 
 }

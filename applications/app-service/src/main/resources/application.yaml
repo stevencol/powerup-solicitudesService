@@ -3,17 +3,16 @@ server:
 spring:
   application:
     name: "solicitudes"
+  webflux:
+    base-path: /api
   devtools:
     add-properties: false
   r2dbc:
-    url: "r2dbc:mysql://localhost:3306/solicitudes"
-    username: "root"
-    password: "1994"
+    url: "${BD_URL}"
+    username: "${BD_USER}"
+    password: "${BD_PASSWORD}"
   profiles:
     include: null
-clients:
-  users-service:
-    url: "http://localhost:8081"
 cors:
   allowed-origins: "http://localhost:4200,http://localhost:8080"
 management:
@@ -25,3 +24,36 @@ management:
     health:
       probes:
         enabled: true
+springdoc:
+  swagger-ui:
+    path: "/swagger"
+    enabled: true
+  api-docs:
+    enabled: true
+    path: "/docs"
+  webflux:
+    router:
+      enabled: true
+  jwt:
+    auth:
+      secret: "${JWT_AUTH_SECRET}"
+clients:
+  users-service:
+    url: "${USERS_SERVICE_URL}"
+adapter:
+  sqs1:
+    region: "us-east-2"
+    queueUrl: "${SQS_URL_1}"
+    #endpoint: "http://localhost:4566"
+
+  sqs2:
+    region: "us-east-2"
+    queueUrl: "${SQS_URL_2}"
+    #endpoint: "http://localhost:4566"
+
+aws:
+  lambda:
+    access-key: "${AWS_ACCESS_KEY_ID}"
+    secret-key: "${AWS_SECRET_ACCESS_KEY}"
+    region: us-east-2
+    lambda-arn: "${AWS_LAMBDA_ARN}"
