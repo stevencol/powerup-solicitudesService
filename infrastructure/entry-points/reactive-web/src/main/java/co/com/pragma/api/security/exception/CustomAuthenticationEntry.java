@@ -18,9 +18,12 @@ import static constants.MessageExceptions.*;
 
 @Component
 public class CustomAuthenticationEntry implements ServerAuthenticationEntryPoint {
+    private final ObjectMapper objectMapper;
 
     @Autowired
-    private ObjectMapper objectMapper;
+    public CustomAuthenticationEntry(ObjectMapper objectMapper) {
+        this.objectMapper = objectMapper;
+    }
 
     @Override
     public Mono<Void> commence(ServerWebExchange exchange, AuthenticationException authException) {

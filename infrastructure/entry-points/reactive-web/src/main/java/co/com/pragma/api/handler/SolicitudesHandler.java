@@ -65,7 +65,7 @@ public class SolicitudesHandler {
         });
     }
 
-    //@PreAuthorize("hasAnyAuthority('asessor')")
+    @PreAuthorize("hasAnyAuthority('assessor','system')")
     public Mono<ServerResponse> updateSolicitud(ServerRequest serverRequest) {
         return serverRequest.bodyToMono(SolicitudDto.class).flatMap(solicitudDto -> {
             SolicitudModel solicitudModel = solicitudMapper.toModel(solicitudDto);

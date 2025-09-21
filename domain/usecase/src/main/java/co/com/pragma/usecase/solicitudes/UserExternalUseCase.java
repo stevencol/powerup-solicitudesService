@@ -14,7 +14,7 @@ public class UserExternalUseCase {
 
     public Mono<UserModel> findUserByDocumentNumber(String documentNumber, String token) {
 
-        return userExternalRepository.findUserByDocumentNumber(documentNumber, token);
+        return userExternalRepository. findUserByDocumentNumber(documentNumber, token);
     }
 
     public Mono<UserModel> findUserByDocumentNumber(String token) {

@@ -22,7 +22,7 @@ public class SQSSendSenderAdapter implements SqsSendRepository {
     private final Gson gson;
     private final String queueUrl;
 
-    public SQSSendSenderAdapter(SqsAsyncClient sqsClient, Gson gson, @Value("${adapter.sqs1.queueUrl}") String queueUrl) {
+    public SQSSendSenderAdapter(SqsAsyncClient sqsClient, Gson gson, @Value("${aws.adapter.sqs.sender.status.queueUrl}") String queueUrl) {
         this.sqsClient = sqsClient;
         this.gson = gson;
         this.queueUrl = queueUrl;
@@ -31,6 +31,7 @@ public class SQSSendSenderAdapter implements SqsSendRepository {
     @Override
     public Mono<Void> sendMessage(NotificationMessageModel message) {
         String messageJson = gson.toJson(message);
+
 
         SendMessageRequest request = SendMessageRequest.builder()
                 .queueUrl(queueUrl)

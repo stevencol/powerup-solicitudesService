@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8082
 spring:
   application:
     name: "solicitudes"
@@ -40,16 +40,9 @@ springdoc:
 clients:
   users-service:
     url: "${USERS_SERVICE_URL}"
-adapter:
-  sqs1:
-    region: "us-east-2"
-    queueUrl: "${SQS_URL_1}"
-    #endpoint: "http://localhost:4566"
 
-  sqs2:
-    region: "us-east-2"
-    queueUrl: "${SQS_URL_2}"
-    #endpoint: "http://localhost:4566"
+
+
 
 aws:
   lambda:
@@ -57,3 +50,19 @@ aws:
     secret-key: "${AWS_SECRET_ACCESS_KEY}"
     region: us-east-2
     lambda-arn: "${AWS_LAMBDA_ARN}"
+  adapter:
+    sqs:
+      sender:
+        status:
+          region: "us-east-2"
+          queueUrl: "${SQS_SENDER_STATUS}"
+      save:
+        report:
+          region: "us-east-2"
+          queueUrl: "${SQS_SAVE_REPORT}"
+          #endpoint: "http://localhost:4566"
+
+      endeudamiento:
+        region: "us-east-2"
+        queueUrl: "${SQS_ENDEUDAMIENTO}"
+      #endpoint: "http://localhost:4566"
